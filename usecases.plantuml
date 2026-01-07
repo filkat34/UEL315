@@ -1,38 +1,60 @@
 @startuml Diagramme des classes d'utilisation
 left to right direction
 
-/' Définition des acteurs humains '/
-:Clients: as Client
-:Conseillers: as Conseiller
-:Administrateurs: as Admin
+/' DÉFINITION DES ACTEURS '/
+/' Acteurs humains '/
+:Clients: as Ac_Client
+:Conseillers: as Ac_Conseiller
+:Administrateurs: as Ac_Admin
 
-/' Définition des acteurs systèmes '/
-:Système de paiement: as SysPaiement
-:Système de vérification d'adresse: as SysAdresse
-:Interface d'investissement: as IntInvest
-:Système de notification: as SysNotif
+/' Acteurs systèmes '/
+:Système de paiement: as Sys_Paiement
+:Système de vérification d'adresse: as Sys_Adresse
+:Système d'investissement: as Sys_Invest
+:Système de notification: as Sys_Notif
 
-/' Définition des cas d'utilisation '/
+/' DÉFINITION DES CAS D'UTILISATION '/
+rectangle "Application Bancaire" as APPLI {
+
 package "Système de paiement"{
-    usecase "Se connecter" as UC0
-    usecase "Vérifier le solde" as UC1
-    usecase "Effectuer un virement" as UC2
-    usecase "Demander un prêt" as UC3
-    secase "Consulter les comptes clients" as UC4
-    usecase "Approuver un prêt" as UC5
+    usecase "Se connecter" as PAI_0
+    usecase "Vérifier le solde" as PAI_1
+    usecase "Effectuer un virement" as PAI_2
+    usecase "Demander un prêt" as PAI_3
+    usecase "Consulter les comptes clients" as PAI_4
+    usecase "Approuver un prêt" as PAI_5
 }
 
 package "Investissements" {
-    usecase "Consulter portefeuille et performance" as UC_Portefeuille
-    usecase "Recevoir conseils selon profil de risque" as UC_Conseils
-    usecase "Acheter et/ou vendre une action" as UC_AchatVenteAction
+    usecase "Consulter portefeuille et performance" as INVEST_0
+    usecase "Recevoir conseils selon profil de risque" as INVEST_1
+    usecase "Acheter et/ou vendre une action" as INVEST_2
   }
 
-/' Associations entre acteurs et cas d'utilisation '/
-:Clients: --> UC1
-:Clients: --> UC2
-:Clients: --> UC3
-UC4 <-- :Conseillers:
-UC5 <-- :Conseillers:
+package "Documents" {
+    usecase "Télécharger relevés et documents" as DOC_0
+    usecase "Soumettre document" as DOC_1
+    usecase "Reçevoir notification de nouveau document" as DOC_2
+  }
+}
+
+/' ASSOCIATIONS ENTRE ACTEURS/SYSTÈMES ET CAS D'UTILISATION '/
+/' Clients '/
+:Clients: --> PAI_1
+:Clients: --> PAI_2
+:Clients: --> PAI_3
+
+:Clients: --> INVEST_0
+:Clients: --> INVEST_1
+:Clients: --> INVEST_2
+
+/' Conseillers '/
+PAI_4 <-- :Conseillers:
+PAI_5 <-- :Conseillers:
+
+/' Administrateurs '/
+
+/' Systèmes '/
+
 
 @enduml
