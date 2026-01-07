@@ -8,7 +8,7 @@ left to right direction
 !theme cerulean
 skinparam packageStyle rectangle
 skinparam usecaseStyle roundcorner
-skinparam roundcorner 12
+skinparam roundcorner 2
 
 skinparam LineThickness 2
 
