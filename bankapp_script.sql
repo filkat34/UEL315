@@ -168,7 +168,7 @@ CREATE TABLE Client_Conseiller (
 
 --- CREATE
 INSERT INTO Client (client_id, nom, prenom, email, telephone, adresse)
-VALUES ('CL004','Petit','Nora','nora.petit@mail.com','0600000004','1 rue D, Nice');
+VALUES ('ADMIN004','Petit','Nora','nora.petit@mail.com','0600000004','1 rue D, Nice');
 
 --- READ
 SELECT * FROM Client WHERE client_id = 'CL001';
@@ -193,6 +193,13 @@ DELETE FROM Client WHERE client_id = 'CL004';
 INSERT INTO Administrateur (admin_id, nom, prenom, email, niveau) VALUES 
 ('ADMIN002', 'Martin', 'Sophie', 'sophie.martin@bankapp.com', 'ADMIN'),
 ('ADMIN003', 'Bernard', 'Pierre', 'pierre.bernard@bankapp.com', 'ADMIN');
+
+-- Clients
+INSERT INTO Client (client_id, nom, prenom, email, telephone, adresse)
+VALUES
+('CL001','Dupont','Marie','marie.dupont@mail.com','0600000001','10 rue A, Paris'),
+('CL002','Martin','Lucas','lucas.martin@mail.com','0600000002','22 rue B, Lyon'),
+('CL003','Bernard','Ines','ines.bernard@mail.com','0600000003','5 rue C, Lille');
 
 -- Conseillers
 INSERT INTO Conseiller (conseiller_id, nom, prenom, email, specialite, date_embauche)
