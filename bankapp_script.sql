@@ -162,9 +162,39 @@ CREATE TABLE Client_Conseiller (
     FOREIGN KEY (conseiller_id) REFERENCES Conseiller(conseiller_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- REQUÊTES SQL
+--- ==========================
+--- REQUÊTES SQL
+--- ==========================
 
--- Ajouter des administrateurs
+
+
+
+--- ==========================
+--- DONNÉES TEST
+--- ==========================
+
+-- Administrateurs
 INSERT INTO Administrateur (admin_id, nom, prenom, email, niveau) VALUES 
-    ('ADMIN002', 'Martin', 'Sophie', 'sophie.martin@bankapp.com', 'ADMIN'),
-    ('ADMIN003', 'Bernard', 'Pierre', 'pierre.bernard@bankapp.com', 'ADMIN');
+('ADMIN002', 'Martin', 'Sophie', 'sophie.martin@bankapp.com', 'ADMIN'),
+('ADMIN003', 'Bernard', 'Pierre', 'pierre.bernard@bankapp.com', 'ADMIN');
+
+-- Conseillers
+INSERT INTO Conseiller (conseiller_id, nom, prenom, email, specialite, date_embauche)
+VALUES
+('CONS001','Durand','Paul','paul.durand@bankapp.com','Crédit','2023-02-01'),
+('CONS002','Legrand','Sana','sana.legrand@bankapp.com','Investissement','2022-09-15');
+
+-- Attribution client <-> conseiller (many-to-many)
+INSERT INTO Client_Conseiller (client_id, conseiller_id)
+VALUES
+('CLI001','CNS001'),
+('CLI002','CNS001'),
+('CLI003','CNS002');
+
+-- Comptes
+INSERT INTO Compte (numero_compte, solde, type_compte, statut, client_id)
+VALUES
+('COMP001', 12000.00, 'COURANT', 'ACTIF', 'CLI001'),
+('COMP002',  3500.00, 'EPARGNE',  'ACTIF', 'CLI001'),
+('COMP003',   900.00, 'COURANT', 'ACTIF', 'CLI002'),
+('COMP004', 20000.00, 'EPARGNE',  'ACTIF', 'CLI003');
