@@ -217,7 +217,29 @@ VALUES
   ('TRX009',  150.00, 'PAIEMENT_RECURRENT', datetime('now','-40 days'), 'Facture', 'ANNULEE',  'ACC104C'),
   ('TRX010',  900.00, 'VIREMENT',datetime('now','-15 days'), 'Virement pro',       'VALIDEE',   'ACC105P');
 
--- LIRE DES DONNÉES 
+--- LIRE DES DONNÉES 
+--- 1. Sélection des clients ayant un solde total > 10000€
+SELECT
+  c.client_id, c.nom, c.prenom,
+  ROUND(SUM(cp.solde), 2) AS solde_total
+FROM Client c
+JOIN Compte cp ON cp.client_id = c.client_id
+GROUP BY c.client_id
+HAVING solde_total > 10000
+ORDER BY solde_total DESC;
+
+--- 2. Affichage de toutes les transactions effectuées le mois dernier (30J)
+SELECT
+  t.transaction_id, t.type_transaction, t.montant, t.date_transaction, t.statut,
+  t.compte_id
+FROM Transactions t
+WHERE datetime(t.date_transaction) >= datetime('now','-1 month')
+ORDER BY datetime(t.date_transaction) DESC;
+
+--- 3. Liste de tous les comptes avec découvert autorisé
+SELECT numero_compte, client_id, type_compte, solde
+FROM Compte
+WHERE solde < 0;
 
 
 --- ==========================
