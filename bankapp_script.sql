@@ -42,6 +42,7 @@ CREATE TABLE Administrateur (
 CREATE TABLE Compte (
     numero_compte TEXT PRIMARY KEY,
     solde REAL NOT NULL DEFAULT 0.00,
+    decouvert_autorise REAL NOT NULL DEFAULT 0.0, --- Ajout decouvert autorisé pour requêtes 
     type_compte TEXT NOT NULL CHECK (type_compte IN ('COURANT','EPARGNE','PROFESSIONNEL')),
     date_ouverture TEXT NOT NULL DEFAULT (date('now')),
     statut TEXT NOT NULL DEFAULT 'ACTIF' CHECK (statut IN ('ACTIF','FERME','SUSPENDU')),
@@ -162,9 +163,9 @@ CREATE TABLE Client_Conseiller (
     FOREIGN KEY (conseiller_id) REFERENCES Conseiller(conseiller_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
---- ==========================
+--- ==========================================
 --- REQUÊTES SQL INSERTION DE DONNÉES (CREATE)
---- ==========================
+--- ==========================================
 
 --- INSERTION DE DONNÉES
 
@@ -218,6 +219,7 @@ VALUES
   ('TRX010',  900.00, 'VIREMENT',datetime('now','-15 days'), 'Virement pro',       'VALIDEE',   'ACC105P');
 
 --- LIRE DES DONNÉES 
+
 --- 1. Sélection des clients ayant un solde total > 10000€
 SELECT
   c.client_id, c.nom, c.prenom,
@@ -247,6 +249,6 @@ WHERE solde < 0;
 --- ==========================
 
 -- Ajouter des administrateurs
-INSERT INTO Administrateur (admin_id, nom, prenom, email, niveau) VALUES 
+INSERT OR IGNORE INTO Administrateur (admin_id, nom, prenom, email, niveau) VALUES 
 ('ADMIN002', 'Martin', 'Sophie', 'sophie.martin@bankapp.com', 'ADMIN'),
 ('ADMIN003', 'Bernard', 'Pierre', 'pierre.bernard@bankapp.com', 'ADMIN');
