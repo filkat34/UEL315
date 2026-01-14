@@ -163,9 +163,25 @@ CREATE TABLE Client_Conseiller (
 );
 
 --- ==========================
---- REQUÊTES SQL
+--- REQUÊTES SQL CRUD
 --- ==========================
 
+--- CREATE
+INSERT INTO Client (client_id, nom, prenom, email, telephone, adresse)
+VALUES ('CL004','Petit','Nora','nora.petit@mail.com','0600000004','1 rue D, Nice');
+
+--- READ
+SELECT * FROM Client WHERE client_id = 'CL001';
+
+--- UPDATE (adresse + téléphone)
+UPDATE Client
+SET adresse = '99 avenue Z, Paris',
+    telephone = '0700000009',
+    date_maj = datetime('now')
+WHERE client_id = 'CL001';
+
+--- DELETE (via Foreign Key Cascade)
+DELETE FROM Client WHERE client_id = 'CL004';
 
 
 
