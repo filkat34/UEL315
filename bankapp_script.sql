@@ -181,20 +181,20 @@ INSERT INTO Administrateur (admin_id, nom, prenom, email, niveau) VALUES
 -- Conseillers
 INSERT INTO Conseiller (conseiller_id, nom, prenom, email, specialite, date_embauche)
 VALUES
-('CONS001','Durand','Paul','paul.durand@bankapp.com','Crédit','2023-02-01'),
-('CONS002','Legrand','Sana','sana.legrand@bankapp.com','Investissement','2022-09-15');
+('CO001','Durand','Paul','paul.durand@bankapp.com','Crédit','2023-02-01'),
+('CO002','Legrand','Sana','sana.legrand@bankapp.com','Investissement','2022-09-15');
 
 -- Attribution client <-> conseiller (many-to-many)
 INSERT INTO Client_Conseiller (client_id, conseiller_id)
 VALUES
-('CLI001','CNS001'),
-('CLI002','CNS001'),
-('CLI003','CNS002');
+('CL001','CO001'),
+('CL002','CO001'),
+('CL003','CO002');
 
 -- Comptes
 INSERT INTO Compte (numero_compte, solde, type_compte, statut, client_id)
 VALUES
-('COMP001', 12000.00, 'COURANT', 'ACTIF', 'CLI001'),
-('COMP002',  3500.00, 'EPARGNE',  'ACTIF', 'CLI001'),
-('COMP003',   900.00, 'COURANT', 'ACTIF', 'CLI002'),
-('COMP004', 20000.00, 'EPARGNE',  'ACTIF', 'CLI003');
+('ACC001', 12000.00, 'COURANT', 'ACTIF', 'CL001'),
+('ACC002',  3500.00, 'EPARGNE',  'ACTIF', 'CL001'),
+('ACC003',   900.00, 'COURANT', 'ACTIF', 'CL002'),
+('ACC004', 20000.00, 'EPARGNE',  'ACTIF', 'CL003');
