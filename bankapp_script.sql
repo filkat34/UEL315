@@ -163,25 +163,8 @@ CREATE TABLE Client_Conseiller (
 );
 
 --- ==========================
---- REQUÊTES SQL CRUD
+--- REQUÊTES SQL
 --- ==========================
-
---- CREATE
-INSERT INTO Client (client_id, nom, prenom, email, telephone, adresse)
-VALUES ('CL004','Petit','Nora','nora.petit@mail.com','0600000004','1 rue D, Nice');
-
---- READ
-SELECT * FROM Client WHERE client_id = 'CL001';
-
---- UPDATE (adresse + téléphone)
-UPDATE Client
-SET adresse = '99 avenue Z, Paris',
-    telephone = '0700000009',
-    date_maj = datetime('now')
-WHERE client_id = 'CL001';
-
---- DELETE (via Foreign Key Cascade)
-DELETE FROM Client WHERE client_id = 'CL004';
 
 
 
@@ -189,35 +172,7 @@ DELETE FROM Client WHERE client_id = 'CL004';
 --- DONNÉES TEST
 --- ==========================
 
--- Administrateurs
+-- Ajouter des administrateurs
 INSERT INTO Administrateur (admin_id, nom, prenom, email, niveau) VALUES 
 ('ADMIN002', 'Martin', 'Sophie', 'sophie.martin@bankapp.com', 'ADMIN'),
 ('ADMIN003', 'Bernard', 'Pierre', 'pierre.bernard@bankapp.com', 'ADMIN');
-
--- Clients
-INSERT INTO Client (client_id, nom, prenom, email, telephone, adresse)
-VALUES
-('CL001','Dupont','Marie','marie.dupont@mail.com','0600000001','10 rue A, Paris'),
-('CL002','Martin','Lucas','lucas.martin@mail.com','0600000002','22 rue B, Lyon'),
-('CL003','Bernard','Ines','ines.bernard@mail.com','0600000003','5 rue C, Lille');
-
--- Conseillers
-INSERT INTO Conseiller (conseiller_id, nom, prenom, email, specialite, date_embauche)
-VALUES
-('CO001','Durand','Paul','paul.durand@bankapp.com','Crédit','2023-02-01'),
-('CO002','Legrand','Sana','sana.legrand@bankapp.com','Investissement','2022-09-15');
-
--- Attribution client <-> conseiller (many-to-many)
-INSERT INTO Client_Conseiller (client_id, conseiller_id)
-VALUES
-('CL001','CO001'),
-('CL002','CO001'),
-('CL003','CO002');
-
--- Comptes
-INSERT INTO Compte (numero_compte, solde, type_compte, statut, client_id)
-VALUES
-('ACC001', 12000.00, 'COURANT', 'ACTIF', 'CL001'),
-('ACC002',  3500.00, 'EPARGNE',  'ACTIF', 'CL001'),
-('ACC003',   900.00, 'COURANT', 'ACTIF', 'CL002'),
-('ACC004', 20000.00, 'EPARGNE',  'ACTIF', 'CL003');
