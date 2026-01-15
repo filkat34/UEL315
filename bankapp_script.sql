@@ -365,7 +365,7 @@ SET statut = 'VALIDEE',
 WHERE statut = 'EN_ATTENTE';
 
 --- ==========================================
---- MISE À JOUR DE DONNÉES
+--- SUPPRESSION DE DONNÉES
 --- ==========================================
 
 -- Supprimer les comptes inactifs depuis plus de 2 ans
