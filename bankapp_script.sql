@@ -166,12 +166,10 @@ CREATE TABLE Client_Conseiller (
 );
 
 --- ==========================================
---- REQUÊTES SQL
+--- INSERTIONS DE DONNÉES INITIALES
 --- ==========================================
 
---- INSERTION DE DONNÉES
-
--- 1. Ajout de 5 nouveaux clients
+-- Ajout de 5 nouveaux clients
 INSERT OR IGNORE INTO Client (client_id, nom, prenom, email, telephone, adresse)
 VALUES
   ('CL101','Dupont','Marie','marie.dupont@mail.com','0600000101','10 rue A, Paris'),
@@ -180,7 +178,7 @@ VALUES
   ('CL104','Cassie','Nora','nora.cassie@mail.com','0600000104','1 rue D, Nice'),
   ('CL105','Moreau','Yanis','yanis.moreau@mail.com','0600000105','8 rue E, Bordeaux');
 
--- 2. Création de 3 comptes pour chaque client
+-- Création de 3 comptes pour chaque client
 INSERT OR IGNORE INTO Compte (numero_compte, solde, type_compte, statut, client_id, date_ouverture)
 VALUES
   ('ACC101C', 12500.00, 'COURANT',       'ACTIF', 'CL101', date('now','-3 years')),
@@ -203,7 +201,7 @@ VALUES
   ('ACC105E',  1500.00, 'EPARGNE',       'ACTIF', 'CL105', date('now','-9 months')),
   ('ACC105P', 25000.00, 'PROFESSIONNEL', 'ACTIF', 'CL105', date('now','-3 months'));
 
--- 3. Ajout de 10 transactions pour différents comptes
+-- Ajout de 10 transactions pour différents comptes
 INSERT OR IGNORE INTO Transactions (transaction_id, montant, type_transaction, date_transaction, description, statut, compte_id)
 VALUES
   ('TRX001', 2500.00, 'DEPOT',   datetime('now','-20 days'), 'Salaire',            'VALIDEE',   'ACC101C'),
@@ -220,9 +218,31 @@ VALUES
   ('TRX009',  150.00, 'PAIEMENT_RECURRENT', datetime('now','-40 days'), 'Facture', 'ANNULEE',  'ACC104C'),
   ('TRX010',  900.00, 'VIREMENT',datetime('now','-15 days'), 'Virement pro',       'VALIDEE',   'ACC105P');
 
---- LIRE DES DONNÉES 
+  -- Administrateurs
+INSERT OR IGNORE INTO Administrateur (admin_id, nom, prenom, email, niveau) VALUES 
+('ADMIN002', 'Martin', 'Sophie', 'sophie.martin@bankapp.com', 'ADMIN'),
+('ADMIN003', 'Bernard', 'Pierre', 'pierre.bernard@bankapp.com', 'ADMIN');
 
---- 1. Sélection des clients ayant un solde total > 10000€
+-- Conseillers
+INSERT OR IGNORE INTO Conseiller (conseiller_id, nom, prenom, email, specialite, date_embauche, date_maj)
+VALUES
+('CO001','Durand','Paul','paul.durand@bankapp.com','Crédit', date('now'), datetime('now')),
+('CO002','Legrand','Sana','sana.legrand@bankapp.com','Investissement', date('now'), datetime('now'));
+
+-- Attribution des conseillers aux clients
+INSERT OR IGNORE INTO Client_Conseiller (client_id, conseiller_id, statut)
+VALUES
+('CL101','CO001','ACTIF'),
+('CL102','CO001','ACTIF'),
+('CL103','CO002','ACTIF'),
+('CL104','CO002','ACTIF'),
+('CL105','CO001','ACTIF');
+
+--- ==========================================
+--- SELECTIONS
+--- ==========================================
+
+--- Sélection des clients ayant un solde total > 10000€
 SELECT
   c.client_id, c.nom, c.prenom,
   ROUND(SUM(cp.solde), 2) AS solde_total
@@ -232,7 +252,7 @@ GROUP BY c.client_id
 HAVING solde_total > 10000
 ORDER BY solde_total DESC;
 
---- 2. Affichage de toutes les transactions effectuées le mois dernier (30J)
+--- Affichage de toutes les transactions effectuées le mois dernier (30J)
 SELECT
   t.transaction_id, t.type_transaction, t.montant, t.date_transaction, t.statut,
   t.compte_id
@@ -240,12 +260,10 @@ FROM Transactions t
 WHERE datetime(t.date_transaction) >= datetime('now','-1 month')
 ORDER BY datetime(t.date_transaction) DESC;
 
---- 3. Liste de tous les comptes avec découvert autorisé
+--- Liste de tous les comptes avec découvert autorisé
 SELECT numero_compte, client_id, type_compte, solde
 FROM Compte
 WHERE solde < 0;
-
---- REQUÊTES COMPLEXES
 
 -- Compter le nombre total de transactions par type de compte
 SELECT c.type_compte, COUNT(t.transaction_id) as nombre_transactions
@@ -279,8 +297,6 @@ FROM Conseiller co
 JOIN Pret p ON co.conseiller_id = p.conseiller_id
 WHERE p.statut IN ('APPROUVE', 'EN_COURS', 'REMBOURSE')
 GROUP BY co.conseiller_id;
-
---- REQUÊTES AVANCÉES
 
 -- Identifier les clients avec un total d'investissements supérieur à leur solde total
 SELECT c.client_id, c.nom, c.prenom,
@@ -323,26 +339,55 @@ SELECT mois,
        (nb_transactions - LAG(nb_transactions, 1, 0) OVER (ORDER BY mois)) as variation
 FROM MonthlyStats;
 
---- ==========================
---- ACTEURS BANCAIRES
---- ==========================
+--- ==========================================
+--- MISE À JOUR DE DONNÉES
+--- ==========================================
 
--- Administrateurs
-INSERT OR IGNORE INTO Administrateur (admin_id, nom, prenom, email, niveau) VALUES 
-('ADMIN002', 'Martin', 'Sophie', 'sophie.martin@bankapp.com', 'ADMIN'),
-('ADMIN003', 'Bernard', 'Pierre', 'pierre.bernard@bankapp.com', 'ADMIN');
+-- Mettre à jour le numéro de téléphone d'un client spécifique
+-- Cible : Client 'CL101'
+UPDATE Client
+SET telephone = '0699887766',
+    date_maj = datetime('now')
+WHERE client_id = 'CL101';
 
--- Conseillers
-INSERT OR IGNORE INTO Conseiller (conseiller_id, nom, prenom, email, specialite, date_embauche, date_maj)
-VALUES
-('CO001','Durand','Paul','paul.durand@bankapp.com','Crédit', date('now'), datetime('now')),
-('CO002','Legrand','Sana','sana.legrand@bankapp.com','Investissement', date('now'), datetime('now'));
+-- Augmenter le découvert autorisé pour certains comptes
+-- Cible : +500€ pour tous les comptes de type 'COURANT'
+UPDATE Compte
+SET decouvert_autorise = decouvert_autorise + 500,
+    date_maj = datetime('now')
+WHERE type_compte = 'COURANT';
 
--- Attribution des conseillers aux clients
-INSERT OR IGNORE INTO Client_Conseiller (client_id, conseiller_id, statut)
-VALUES
-('CL101','CO001','ACTIF'),
-('CL102','CO001','ACTIF'),
-('CL103','CO002','ACTIF'),
-('CL104','CO002','ACTIF'),
-('CL105','CO001','ACTIF');
+-- Modifier le statut des transactions en attente
+-- Action : Valider toutes les transactions actuellement 'EN_ATTENTE'
+UPDATE Transactions
+SET statut = 'VALIDEE',
+    date_maj = datetime('now')
+WHERE statut = 'EN_ATTENTE';
+
+--- ==========================================
+--- MISE À JOUR DE DONNÉES
+--- ==========================================
+
+-- Supprimer les comptes inactifs depuis plus de 2 ans
+-- Logique : On identifie les comptes n'ayant aucune transaction datée de moins de 2 ans.
+DELETE FROM Compte
+WHERE numero_compte NOT IN (
+    SELECT DISTINCT compte_id
+    FROM Transactions
+    WHERE date_transaction >= datetime('now', '-2 years')
+);
+
+-- Effacer les transactions refusées ou annulées
+-- Logique : Supprime toutes les transactions dont le statut est 'ANNULEE'.
+DELETE FROM Transactions
+WHERE statut = 'ANNULEE';
+
+-- Retirer les clients sans transactions actives
+-- Logique : Supprime les clients qui ne sont associés à aucune transaction (via leurs comptes).
+DELETE FROM Client
+WHERE client_id NOT IN (
+    SELECT DISTINCT c.client_id
+    FROM Client c
+    JOIN Compte cp ON c.client_id = cp.client_id
+    JOIN Transactions t ON cp.numero_compte = t.compte_id
+);
