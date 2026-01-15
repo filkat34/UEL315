@@ -2,8 +2,6 @@
 
 ## Membres du groupe
 
-## Membres du groupe
-
 | Etudiant.e  |   Alias    |
 | :---------: | :--------: |
 | Mathilde C. | Clouddy23  |
