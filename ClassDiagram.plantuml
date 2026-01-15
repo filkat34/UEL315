@@ -1,6 +1,6 @@
 @startuml Class Diagram - Application Bancaire
 
-title Diagramme de classe - Application bancaire (Généré à partir des cas d'utilisation)
+title Diagramme de classe - Application bancaire
 
 ' Classes principales '
 
