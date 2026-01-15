@@ -5,8 +5,9 @@
 - [x] Concevoir un diagramme de cas d'utilisation
 - [x] Concevoir un diagramme de classes
 - [x] Concevoir un modèle conceptuel de données
+- [x] Créer la base de données SQLite
+- [x] Créer les tables de la base de données SQLite
 - [ ] Rédiger un script sql avec les requêtes à la base de données
-- [ ] Créer la base de données SQLite
 - [ ] Exécuter le script SQL pour créer et peupler la base de données
 
 ## Préparation de l'environnement de travail
@@ -39,6 +40,58 @@
 ![Modèle Conceptuel de Données](out/MCD/mcd.png)
 
 ### Création de la base de données
+
+[x] Création d'une base de données SQLite `bankapp.db` grâce au logiciel _DB Browser_
+[x] Ecriture des requêtes SQL de création des différentes tables à partir du MCD
+[x] Exécution du script de création des tables sur DB Browser
+
+![Création des tables](docs/creationTables.png)
+
+## Requêtes SQL du TD
+
+### 1. Insérer des Données
+
+- [x] Ajouter 5 nouveaux clients dans la table Clients.
+- [x] Créer 3 nouveaux comptes pour chaque client ajouté.
+- [x] Insérer 10 transactions pour différents comptes.
+
+![Insert 10 transactions](docs/RequêtesSQL/Creation10Transactions.png)
+
+### 2. Lire des Données
+
+- [x] Sélectionner les clients ayant un solde supérieur à 10 000 €.
+- [x] Afficher toutes les transactions effectuées le mois dernier.
+- [x] Lister tous les comptes avec un découvert autorisé.
+
+![Selecte Client >10000](docs/RequêtesSQL/selectionClientsSoldeSuperieur10000.png)
+
+### 3. Mettre à Jour des Données
+
+- [ ] Mettre à jour le numéro de téléphone d'un client spécifique.
+- [ ] Augmenter le découvert autorisé pour certains comptes.
+- [ ] Modifier le statut des transactions en attente.
+
+### 4. Supprimer des Données
+
+- [ ] Supprimer les comptes inactifs depuis plus de 2 ans.
+- [ ] Effacer les transactions refusées ou annulées.
+- [ ] Retirer les clients sans transactions actives.
+
+### 5. Requêtes Complexes
+
+- [ ] Compter le nombre total de transactions par type de compte.
+- [ ] Calculer la moyenne des soldes de tous les comptes épargne.
+- [ ] Trouver les 5 clients les plus actifs en termes de transactions.
+- [ ] Lister les prêts dont la durée restante est inférieure à un an.
+- [ ] Afficher le total des prêts accordés par conseiller.
+
+### 6. Requêtes Avancées
+
+- [ ] Identifier les clients avec un total d'investissements supérieur à leur solde total.
+- [ ] Trouver les comptes ayant le plus haut taux de transactions réussies.
+- [ ] Lister les clients qui n'ont pas utilisé de services de prêt ou d'investissement.
+- [ ] Déterminer le montant total des intérêts générés par les prêts.
+- [ ] Calculer la variation mensuelle du nombre de transactions.
 
 ## Webographie
 
