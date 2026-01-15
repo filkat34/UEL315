@@ -102,4 +102,4 @@
 
 ### Pour s'entraîner au SQL
 
-[SQLBolt](https://sqlbolt.com/)
+- [SQLBolt](https://sqlbolt.com/)
