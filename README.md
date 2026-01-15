@@ -1,14 +1,24 @@
-# UEL315 Base de données
+# UEL315 Base de données (Groupe D)
 
-## Objectif
+## Membres du groupe
 
-Rendre dans un fichier ZIP :
+| Etudiant.e  |   Alias    |
+| :---------: | :--------: |
+| Mathilde C. | Clouddy23  |
+|   Kamo G.   | Spaghette5 |
+| Mathieu L.  |  mathleys  |
+| Filippos K. |  filkat34  |
+| Yamine D. ? | yamine-dr ? |
 
-- [x] Un diagramme de cas d'utilisation
-- [x] Un diagramme de classes
-- [x] Un modèle conceptuel de données
-- [ ] Un script sql avec les requêtes à la base
-- [ ] Le fichier de la base de données SQLite
+## Objectifs
+
+- [x] Concevoir un diagramme de cas d'utilisation
+- [x] Concevoir un diagramme de classes
+- [x] Concevoir un modèle conceptuel de données
+- [x] Créer la base de données SQLite
+- [x] Créer les tables de la base de données SQLite
+- [ ] Rédiger un script sql avec les requêtes à la base de données
+- [ ] Exécuter le script SQL pour créer et peupler la base de données
 
 ## Préparation de l'environnement de travail
 
@@ -18,20 +28,98 @@ Rendre dans un fichier ZIP :
 - Télécharger et installer [DBBrowser](https://sqlitebrowser.org/) pour pouvoir gérer une base de données SQLite
 - Se renseigner sur les spécificités de [SQLite](https://sqlite.org/lang.html)
 
-## A faire
+## Processus à suivre
 
-- [ ] Se partager les requêtes SQL
-- [ ] Créer une branche du dépôt et travailler sur ses requêtes dans le fichier `bankapp_script.sql`
-- [ ] Tester ses requêtes en les insérant à la base (fichier `baknapp.db`) grâce à DB Browser
-- [ ] Prendre des captures d'écran de ce que vous faites sur DB Browser et les déposer dans le dossier `docs` du dépôt
-- [ ] Faire sa demande de tirage
-- [ ] Filippos se charge de recréer la base de données une fois le fichier `bankapp_script.sql` terminé car il y aura forcément des conflits au fur et à mesure de l'avancement. Il déposera tout sur Moodle.
+1. Créer une branche du dépôt et travailler sur ses requêtes dans le fichier `bankapp_script.sql`
+2. Tester ses requêtes en les insérant à la base (fichier `baknapp.db`) grâce à DB Browser
+3. Prendre des captures d'écran de ce que vous faites sur DB Browser et les déposer dans le dossier `docs` du dépôt
+4. Faire sa demande de tirage
 
-## Autres logiciels de modelisation opensource
+## Tâches
+
+### Modelisation de la base des données
+
+- [x] Concevoir un diagramme de cas d'utilisation
+- [x] Concevoir un diagramme de classes
+- [x] Concevoir un modèle conceptuel de données
+
+![Diagramme des cas d'utilisation](out/usecases/usecases.png)
+
+![Diagramme de classes](out/ClassDiagram/classdiagram.png)
+
+![Modèle Conceptuel de Données](out/MCD/mcd.png)
+
+### Création de la base de données
+
+- [x] Création d'une base de données SQLite `bankapp.db` grâce au logiciel _DB Browser_
+- [x] Ecriture des requêtes SQL de création des différentes tables à partir du MCD
+- [x] Exécution du script de création des tables sur DB Browser
+
+![Création des tables](docs/creationTables.png)
+
+## Requêtes SQL du TD
+
+### 1. Insérer des Données
+
+- [x] Ajouter 5 nouveaux clients dans la table Clients.
+- [x] Créer 3 nouveaux comptes pour chaque client ajouté.
+- [x] Insérer 10 transactions pour différents comptes.
+
+![Insert 10 transactions](docs/RequêtesSQL/Creation10Transactions.png)
+
+### 2. Lire des Données
+
+- [x] Sélectionner les clients ayant un solde supérieur à 10 000 €.
+- [x] Afficher toutes les transactions effectuées le mois dernier.
+- [x] Lister tous les comptes avec un découvert autorisé.
+
+![Selecte Client >10000](docs/RequêtesSQL/selectionClientsSoldeSuperieur10000.png)
+
+### 3. Mettre à Jour des Données
+
+- [ ] Mettre à jour le numéro de téléphone d'un client spécifique.
+- [ ] Augmenter le découvert autorisé pour certains comptes.
+- [ ] Modifier le statut des transactions en attente.
+
+### 4. Supprimer des Données
+
+- [ ] Supprimer les comptes inactifs depuis plus de 2 ans.
+- [ ] Effacer les transactions refusées ou annulées.
+- [ ] Retirer les clients sans transactions actives.
+
+### 5. Requêtes Complexes
+
+- [x] Compter le nombre total de transactions par type de compte.
+![Requete1](docs/requetes_complexes/requete1.png)
+- [x] Calculer la moyenne des soldes de tous les comptes épargne.
+![Requete2](docs/requetes_complexes/requete2.png)
+- [x] Trouver les 5 clients les plus actifs en termes de transactions.
+![Requete3](docs/requetes_complexes/requete3.png)
+- [x] Lister les prêts dont la durée restante est inférieure à un an.
+![Requete4](docs/requetes_complexes/requete4.png)
+- [x] Afficher le total des prêts accordés par conseiller.
+![Requete5](docs/requetes_complexes/requete5.png)
+
+### 6. Requêtes Avancées
+
+- [x] Identifier les clients avec un total d'investissements supérieur à leur solde total.
+![Requete1](docs/requetes_avancees/requete1.png)
+- [x] Trouver les comptes ayant le plus haut taux de transactions réussies.
+![Requete2](docs/requetes_avancees/requete2.png)
+- [x] Lister les clients qui n'ont pas utilisé de services de prêt ou d'investissement.
+![Requete3](docs/requetes_avancees/requete3.png)
+- [x] Déterminer le montant total des intérêts générés par les prêts.
+![Requete4](docs/requetes_avancees/requete4.png)
+- [x] Calculer la variation mensuelle du nombre de transactions.
+![Requete5](docs/requetes_avancees/requete5.png)
+
+## Webographie
+
+### Autres logiciels de modelisation opensource
 
 - [Looping](https://www.looping-mcd.fr/)
 - [Umbrello](https://apps.kde.org/fr/umbrello/)
 
-## Pour s'entraîner au SQL
+### Pour s'entraîner au SQL
 
-[SQLBolt](https://sqlbolt.com/)
+- [SQLBolt](https://sqlbolt.com/)
