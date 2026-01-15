@@ -62,14 +62,19 @@ class Administrateur {
 class Compte {
     -numeroCompte : String
     -solde : Double
+    -decouvertAutorise : Double
     -type : TypeCompte
     -dateOuverture : Date
+    -statut : StatutCompte
     -dateMaj : Date
+    -clientId : String
     --
     +crediter()
     +debiter()
     +consulterSolde()
     +genererReleve()
+    +autoriserDecouvert()
+    +changerStatut()
 }
 
 class Transaction {

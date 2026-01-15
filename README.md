@@ -8,7 +8,6 @@
 |   Kamo G.   | Spaghette5 |
 | Mathieu L.  |  mathleys  |
 | Filippos K. |  filkat34  |
-| Yamine D. ? | yamine-dr ? |
 
 ## Objectifs
 
@@ -17,8 +16,9 @@
 - [x] Concevoir un modèle conceptuel de données
 - [x] Créer la base de données SQLite
 - [x] Créer les tables de la base de données SQLite
-- [ ] Rédiger un script sql avec les requêtes à la base de données
-- [ ] Exécuter le script SQL pour créer et peupler la base de données
+- [x] Rédiger un script sql avec les requêtes à la base de données
+- [x] Exécuter le script SQL pour créer et peupler la base de données
+- [x] Tester les requêtes de SELECT, UPDATE, DELETE
 
 ## Préparation de l'environnement de travail
 
@@ -62,7 +62,13 @@
 ### 1. Insérer des Données
 
 - [x] Ajouter 5 nouveaux clients dans la table Clients.
+
+![Ajout clients](docs/RequêtesSQL/creation5Clients.png)
+
 - [x] Créer 3 nouveaux comptes pour chaque client ajouté.
+
+![Ajout comptes](docs/RequêtesSQL/creation3ComptesClient.png)
+
 - [x] Insérer 10 transactions pour différents comptes.
 
 ![Insert 10 transactions](docs/RequêtesSQL/Creation10Transactions.png)
@@ -70,47 +76,71 @@
 ### 2. Lire des Données
 
 - [x] Sélectionner les clients ayant un solde supérieur à 10 000 €.
+
+![solde > 10000](docs/RequêtesSQL/selectionClientsSoldeSuperieur10000.png)
+
 - [x] Afficher toutes les transactions effectuées le mois dernier.
+
+![trans mois dernier](docs/RequêtesSQL/listeTransactionsMoisDernier.png)
+
 - [x] Lister tous les comptes avec un découvert autorisé.
 
-![Selecte Client >10000](docs/RequêtesSQL/selectionClientsSoldeSuperieur10000.png)
+![découvert autorisé](docs/RequêtesSQL/listeComptesDecouvertAutorise.png)
 
 ### 3. Mettre à Jour des Données
 
-- [ ] Mettre à jour le numéro de téléphone d'un client spécifique.
-- [ ] Augmenter le découvert autorisé pour certains comptes.
-- [ ] Modifier le statut des transactions en attente.
+- [x] Mettre à jour le numéro de téléphone d'un client spécifique.
+- [x] Augmenter le découvert autorisé pour certains comptes.
+- [x] Modifier le statut des transactions en attente.
 
 ### 4. Supprimer des Données
 
-- [ ] Supprimer les comptes inactifs depuis plus de 2 ans.
-- [ ] Effacer les transactions refusées ou annulées.
-- [ ] Retirer les clients sans transactions actives.
+- [x] Supprimer les comptes inactifs depuis plus de 2 ans.
+- [x] Effacer les transactions refusées ou annulées.
+- [x] Retirer les clients sans transactions actives.
 
 ### 5. Requêtes Complexes
 
 - [x] Compter le nombre total de transactions par type de compte.
+
 ![Requete1](docs/requetes_complexes/requete1.png)
+
 - [x] Calculer la moyenne des soldes de tous les comptes épargne.
+
 ![Requete2](docs/requetes_complexes/requete2.png)
+
 - [x] Trouver les 5 clients les plus actifs en termes de transactions.
+
 ![Requete3](docs/requetes_complexes/requete3.png)
+
 - [x] Lister les prêts dont la durée restante est inférieure à un an.
+
 ![Requete4](docs/requetes_complexes/requete4.png)
+
 - [x] Afficher le total des prêts accordés par conseiller.
+
 ![Requete5](docs/requetes_complexes/requete5.png)
 
 ### 6. Requêtes Avancées
 
 - [x] Identifier les clients avec un total d'investissements supérieur à leur solde total.
+
 ![Requete1](docs/requetes_avancees/requete1.png)
+
 - [x] Trouver les comptes ayant le plus haut taux de transactions réussies.
+
 ![Requete2](docs/requetes_avancees/requete2.png)
+
 - [x] Lister les clients qui n'ont pas utilisé de services de prêt ou d'investissement.
+
 ![Requete3](docs/requetes_avancees/requete3.png)
+
 - [x] Déterminer le montant total des intérêts générés par les prêts.
+
 ![Requete4](docs/requetes_avancees/requete4.png)
+
 - [x] Calculer la variation mensuelle du nombre de transactions.
+
 ![Requete5](docs/requetes_avancees/requete5.png)
 
 ## Webographie

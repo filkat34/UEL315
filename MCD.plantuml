@@ -47,6 +47,7 @@ ENTITY Compte {
     * numero_compte : VARCHAR(50) <<PK>>
     --
     solde : DECIMAL(15,2)
+    decouvert_autorise : DECIMAL(15,2)
     type_compte : ENUM('COURANT','EPARGNE','PROFESSIONNEL')
     date_ouverture : DATE
     statut : ENUM('ACTIF','FERME','SUSPENDU')
