@@ -1,4 +1,4 @@
-@startuml MCD - Application Bancaire
+@startuml mcd
 
 title Modèle Conceptuel de Données (MCD) - Application bancaire
 

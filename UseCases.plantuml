@@ -1,4 +1,4 @@
-@startuml Diagramme des cas d'utilisation
+@startuml usecases
 left to right direction
 
 title Diagramme des cas d'utilisation - Application bancaire
