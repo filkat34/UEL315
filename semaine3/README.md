@@ -39,7 +39,7 @@ const newBook = db.getCollection("dblp").insertOne({
 console.log(newBook);
 ```
 
-Playground output :
+Sortie console :
 
 ```json
 {
@@ -64,6 +64,8 @@ const newArticle = db.getCollection("dblp").insertOne({
 console.log(newArticle);
 ```
 
+Sortie console :
+
 ```json
 {
   acknowledged: true,
@@ -78,6 +80,8 @@ console.log(newArticle);
 const bookCount = db.getCollection("dblp").countDocuments({ type: "Book" });
 console.log("Number of books:", bookCount);
 ```
+
+Sortie console :
 
 ```bash
 Nombre de livres:
@@ -95,6 +99,8 @@ const authorCount = db
 console.log(`Nombre de publications de ${authorName}:`, authorCount);
 ```
 
+Sortie console :
+
 ```bash
 Nombre de publications de Filippos Katsanos:
 1
@@ -109,6 +115,8 @@ const articleCountSince2012 = db
   .countDocuments({ type: "Article", year: { $gte: 2012 } });
 console.log("Nombre d'articles depuis 2012:", articleCountSince2012);
 ```
+
+Sortie console :
 
 ```bash
 Nombre d'articles depuis 2012:
