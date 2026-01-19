@@ -15,7 +15,7 @@
 - [ ] Exercice 1 (en entier) - Yamine
 - [ ] Exercice 2 (requêtes 1 à 5)
 - [ ] Exercice 2 (requêtes 6 à 9) - Kamo
-- [ ] Exercice 3 (requêtes 1 à 5) - Filippos
+- [x] Exercice 3 (requêtes 1 à 5) - Filippos
 - [ ] Exercice 3 (requêtes 6 à 10)
 
 ## Exercice 1
