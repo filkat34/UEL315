@@ -5,3 +5,5 @@ use("UEL315_S3");
 const years = db.getCollection("dblp").distinct("year", {
   $or: [{ authors: "Wolfgang Wahlster" }, { author: "Wolfgang Wahlster" }],
 });
+
+years.sort((a, b) => a - b);
