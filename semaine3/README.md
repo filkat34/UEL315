@@ -16,7 +16,7 @@
 - [ ] Exercice 2 (requêtes 1 à 5)
 - [ ] Exercice 2 (requêtes 6 à 9) - Kamo
 - [x] Exercice 3 (requêtes 1 à 5) - Filippos
-- [ ] Exercice 3 (requêtes 6 à 10)
+- [x] Exercice 3 (requêtes 6 à 10) - Mathilde
 
 ## Exercice 1
 
@@ -928,3 +928,23 @@ Playground result :
   },
 ];
 ```
+
+### Requête 6 (JS + Playground result)
+
+![requête 6](screenshots/ex3-req6.png)
+
+### Requête 7 (JS + Playground result)
+
+![requête 7](screenshots/ex3-req7.png)
+
+### Requête 8 (JS + Playground result)
+
+![requête 8](screenshots/ex3-req8.png)
+
+### Requête 9 (JS + Playground result)
+
+![requête 9](screenshots/ex3-req9.png)
+
+### Requête 10 (JS + Playground result)
+
+![requête 10](screenshots/ex3-req10.png)
