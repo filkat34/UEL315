@@ -11869,6 +11869,7 @@ db.getCollection("dblp").insertMany([
   },
 ]);
 
+// Ajouter une nouvelle publication de type « Book »
 const newBook = db.getCollection("dblp").insertOne({
   type: "Book",
   title:
@@ -11880,6 +11881,7 @@ const newBook = db.getCollection("dblp").insertOne({
 });
 console.log(newBook);
 
+// Ajouter une nouvelle publication de type « Article »
 const newArticle = db.getCollection("dblp").insertOne({
   type: "Article",
   title: "Pas d'inspiration",
@@ -11895,15 +11897,18 @@ console.log(newArticle);
 const bookCount = db.getCollection("dblp").countDocuments({ type: "Book" });
 console.log("Nombre de livres:", bookCount);
 
-// Afficher le nombre de publications dont je suis auteur
+// Afficher les publications dont je suis auteur
 const authorName = "Filippos Katsanos";
-const authorCount = db
+const authorsPublications = db
   .getCollection("dblp")
-  .countDocuments({ authors: authorName });
-console.log(`Nombre de publications de ${authorName}:`, authorCount);
+  .find({ authors: authorName });
+console.log(`Publications de ${authorName}:`, authorsPublications.toArray());
 
-//Afficher le nombre de publications de type « Article » depuis 2012
-const articleCountSince2012 = db
+//Afficher le titre de toutes les publications de type « Article » depuis 2012
+const articlesSince2012 = db
   .getCollection("dblp")
-  .countDocuments({ type: "Article", year: { $gte: 2012 } });
-console.log("Nombre d'articles depuis 2012:", articleCountSince2012);
+  .find({ type: "Article", year: { $gte: 2012 } });
+const titlesSince2012 = articlesSince2012
+  .map((article) => article.title)
+  .toArray();
+console.log("Titres des articles depuis 2012:", titlesSince2012);
