@@ -21,13 +21,15 @@
 ## Exercice 1
 
 ## Exercice 2
+
 ### Requête 1
+
 ```js
 // Afficher tous les titres
-db.getCollection('documents').find(
-    {}, 
-    { "fields.titre_avec_lien_vers_le_catalogue": 1, "_id": 0 }
-)
+db.getCollection("documents").find(
+  {},
+  { "fields.titre_avec_lien_vers_le_catalogue": 1, _id: 0 },
+);
 ```
 
 Playground Result :
@@ -35,115 +37,119 @@ Playground Result :
 ```js
 [
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Cinquante nuances plus sombres : roman"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue:
+        "Cinquante nuances plus sombres : roman",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Dans la maison"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "Dans la maison",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "La nostalgie heureuse"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "La nostalgie heureuse",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Au revoir là-haut : roman"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "Au revoir là-haut : roman",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Les lisières"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "Les lisières",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Quai d'Orsay : chroniques diplomatiques. 2"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue:
+        "Quai d'Orsay : chroniques diplomatiques. 2",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Etranges rivages"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "Etranges rivages",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "L'hiver du monde : roman"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "L'hiver du monde : roman",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "La révolte"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "La révolte",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Peste & choléra : roman"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "Peste & choléra : roman",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Immortelle randonnée : Compostelle malgré moi"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue:
+        "Immortelle randonnée : Compostelle malgré moi",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Hunger Games"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "Hunger Games",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Que choisir ?"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "Que choisir ?",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Skyfall"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "Skyfall",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Polisse"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "Polisse",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Kaïken : roman"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "Kaïken : roman",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Le grand Coeur : roman"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "Le grand Coeur : roman",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Aya de Yopougon. 3"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "Aya de Yopougon. 3",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "The Master"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "The Master",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Les femmes du bus 678"
-    }
-  }
-]
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "Les femmes du bus 678",
+    },
+  },
+];
 ```
 
 ### Requête 2
+
 ```js
 // Afficher tous les titres des documents ayant les rangs 1 à 10
-db.getCollection('documents').find(
-    { "fields.rang": { $gte: 1, $lte: 10 } }, 
-    { "fields.titre_avec_lien_vers_le_catalogue": 1, "_id": 0 }
-)
+db.getCollection("documents").find(
+  { "fields.rang": { $gte: 1, $lte: 10 } },
+  { "fields.titre_avec_lien_vers_le_catalogue": 1, _id: 0 },
+);
 ```
 
 Playground Result :
@@ -151,65 +157,69 @@ Playground Result :
 ```js
 [
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Cinquante nuances plus sombres : roman"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue:
+        "Cinquante nuances plus sombres : roman",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Au revoir là-haut : roman"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "Au revoir là-haut : roman",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Immortelle randonnée : Compostelle malgré moi"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue:
+        "Immortelle randonnée : Compostelle malgré moi",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "1Q84. 3. Octobre-décembre"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "1Q84. 3. Octobre-décembre",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "L'embrasement"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "L'embrasement",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Le sermon sur la chute de Rome"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "Le sermon sur la chute de Rome",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "La vérité sur l'affaire Harry Quebert : roman"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue:
+        "La vérité sur l'affaire Harry Quebert : roman",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Le bleu est une couleur chaude"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "Le bleu est une couleur chaude",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "La liste de mes envies"
-    }
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "La liste de mes envies",
+    },
   },
   {
-    "fields": {
-      "titre_avec_lien_vers_le_catalogue": "Cinquante nuances de Grey : roman"
-    }
-  }
-]
+    fields: {
+      titre_avec_lien_vers_le_catalogue: "Cinquante nuances de Grey : roman",
+    },
+  },
+];
 ```
 
 ### Requête 3
+
 ```js
 // Afficher les auteurs de tous les documents dont le titre commence par la lettre N
-db.getCollection('documents').find(
-    { "fields.titre_avec_lien_vers_le_catalogue": /^N/ }, 
-    { "fields.auteur": 1, "_id": 0 }
-)
+db.getCollection("documents").find(
+  { "fields.titre_avec_lien_vers_le_catalogue": /^N/ },
+  { "fields.auteur": 1, _id: 0 },
+);
 ```
 
 Playground Result :
@@ -217,111 +227,113 @@ Playground Result :
 ```js
 [
   {
-    "fields": {
-      "auteur": "Gloaguen, Philippe"
-    }
+    fields: {
+      auteur: "Gloaguen, Philippe",
+    },
   },
   {
-    "fields": {
-      "auteur": "Mukasonga, Scholastique"
-    }
+    fields: {
+      auteur: "Mukasonga, Scholastique",
+    },
   },
   {
-    "fields": {
-      "auteur": "Moix, Yann"
-    }
+    fields: {
+      auteur: "Moix, Yann",
+    },
   },
   {
-    "fields": {
-      "auteur": "Coatalem, Jean-Luc"
-    }
+    fields: {
+      auteur: "Coatalem, Jean-Luc",
+    },
   },
   {
-    "fields": {
-      "auteur": ""
-    }
+    fields: {
+      auteur: "",
+    },
   },
   {
-    "fields": {
-      "auteur": "Hunter, Erin"
-    }
+    fields: {
+      auteur: "Hunter, Erin",
+    },
   },
   {
-    "fields": {
-      "auteur": "Bonetto, Cristian"
-    }
+    fields: {
+      auteur: "Bonetto, Cristian",
+    },
   },
   {
-    "fields": {
-      "auteur": "Toussaint, Jean-Philippe"
-    }
+    fields: {
+      auteur: "Toussaint, Jean-Philippe",
+    },
   },
   {
-    "fields": {
-      "auteur": ""
-    }
+    fields: {
+      auteur: "",
+    },
   },
   {
-    "fields": {
-      "auteur": "Roth, Philip"
-    }
+    fields: {
+      auteur: "Roth, Philip",
+    },
   },
   {
-    "fields": {
-      "auteur": ""
-    }
+    fields: {
+      auteur: "",
+    },
   },
   {
-    "fields": {
-      "auteur": ""
-    }
+    fields: {
+      auteur: "",
+    },
   },
   {
-    "fields": {
-      "auteur": "Coben, Harlan"
-    }
+    fields: {
+      auteur: "Coben, Harlan",
+    },
   },
   {
-    "fields": {
-      "auteur": "Vigan, Delphine de"
-    }
+    fields: {
+      auteur: "Vigan, Delphine de",
+    },
   },
   {
-    "fields": {
-      "auteur": "Orval, Thierry"
-    }
+    fields: {
+      auteur: "Orval, Thierry",
+    },
   },
   {
-    "fields": {
-      "auteur": "Otis, Ginger Adams"
-    }
+    fields: {
+      auteur: "Otis, Ginger Adams",
+    },
   },
   {
-    "fields": {
-      "auteur": "Bussi, Michel"
-    }
-  }
-]
+    fields: {
+      auteur: "Bussi, Michel",
+    },
+  },
+];
 ```
 
 ### Requête 4
+
 ```js
 // Afficher toutes les informations vers les documents n'ayant pas de champ "type_de_document"
-db.getCollection('documents').find(
-    { "fields.type_de_document": { $exists: false } }
-)
+db.getCollection("documents").find({
+  "fields.type_de_document": { $exists: false },
+});
 ```
 
 Playground Result :
 
 ```js
-[]
+[];
 ```
 
 ### Requête 5
+
 ```js
 // Afficher les différents types de documents qui apparaissent dans cette base
-db.getCollection('documents').distinct("fields.type_de_document")
+db.getCollection("documents").distinct("fields.type_de_document");
 ```
 
 Playground Result :
@@ -346,8 +358,8 @@ Playground Result :
   "Livre pour adulte",
   "Nouveauté",
   "Nouveauté disque compact",
-  "Revue pour adulte"
-]
+  "Revue pour adulte",
+];
 ```
 
 ## Exercice 3
@@ -453,7 +465,7 @@ db.getCollection("dblp")
 
 Playground result (extrait) :
 
-```js
+````js
 [
   {
     "title": "Shared Interfaces for Co-located Interaction."
@@ -495,4 +507,9 @@ Playground result (extrait) :
     "title": "The Smart SemProM."
   } [...]
 ]
-```
+```,
+  {
+    "title": "The Smart SemProM."
+  } [...]
+]
+````
