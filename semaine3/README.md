@@ -22,7 +22,7 @@
 
 ## Exercice 2
 
-### Requête 1
+### Requête 2.1
 
 ```js
 // Afficher tous les titres
@@ -142,7 +142,7 @@ Playground Result :
 ];
 ```
 
-### Requête 2
+### Requête 2.2
 
 ```js
 // Afficher tous les titres des documents ayant les rangs 1 à 10
@@ -212,7 +212,7 @@ Playground Result :
 ];
 ```
 
-### Requête 3
+### Requête 2.3
 
 ```js
 // Afficher les auteurs de tous les documents dont le titre commence par la lettre N
@@ -314,7 +314,7 @@ Playground Result :
 ];
 ```
 
-### Requête 4
+### Requête 2.4
 
 ```js
 // Afficher toutes les informations vers les documents n'ayant pas de champ "type_de_document"
@@ -329,7 +329,7 @@ Playground Result :
 [];
 ```
 
-### Requête 5
+### Requête 2.5
 
 ```js
 // Afficher les différents types de documents qui apparaissent dans cette base
@@ -364,7 +364,7 @@ Playground Result :
 
 ## Exercice 3
 
-### Requête 1
+### Requête 3.1
 
 ```js
 // Ajouter une nouvelle publication de type « Book »
@@ -390,7 +390,7 @@ Playground Result :
 }
 ```
 
-### Requête 2
+### Requête 3.2
 
 ```javascript
 // Ajouter une nouvelle publication de type « Article »
@@ -415,7 +415,7 @@ Playground Result :
 }
 ```
 
-### Requête 3
+### Requête 3.3
 
 ```javascript
 // Afficher le nombre de publications de type « Book »
@@ -428,7 +428,7 @@ Playground Result :
 92
 ```
 
-### Requête 4
+### Requête 3.4
 
 ```javascript
 // Afficher toutes les publications dont je suis l'auteur
@@ -453,7 +453,7 @@ Playground result :
 ];
 ```
 
-### Requête 5
+### Requête 3.5
 
 ```javascript
 //Afficher le titre de toutes les publications depuis 2012 inclus
