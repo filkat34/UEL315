@@ -16,7 +16,7 @@
 - [x] Exercice 2 (requêtes 1 à 5) - Mathieu
 - [ ] Exercice 2 (requêtes 6 à 9) - Kamo
 - [x] Exercice 3 (requêtes 1 à 5) - Filippos
-- [ ] Exercice 3 (requêtes 6 à 10)
+- [x] Exercice 3 (requêtes 6 à 10) - Mathilde
 
 ## Exercice 1
 
