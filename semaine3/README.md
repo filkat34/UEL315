@@ -866,7 +866,7 @@ db.getCollection("documents").aggregate([
 ]);
 ```
 
-Playground Result :
+Playground Result (10 premiers résultats) :
 
 ```js
 [
