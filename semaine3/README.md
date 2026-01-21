@@ -468,43 +468,183 @@ Playground result (extrait) :
 ```js
 [
   {
-    "title": "Shared Interfaces for Co-located Interaction."
+    title: "Shared Interfaces for Co-located Interaction.",
   },
   {
-    "title": "The Semantic Product Memory: An Interactive Black Box for Smart Objects."
+    title:
+      "The Semantic Product Memory: An Interactive Black Box for Smart Objects.",
   },
   {
-    "title": "Perspectives on Reasoning About Time."
+    title: "Perspectives on Reasoning About Time.",
   },
   {
-    "title": "A SemProM Use Case: Maintenance of Factory and Automotive Components."
+    title:
+      "A SemProM Use Case: Maintenance of Factory and Automotive Components.",
   },
   {
-    "title": "A SemProM Use Case: Health Care and Compliance."
+    title: "A SemProM Use Case: Health Care and Compliance.",
   },
   {
-    "title": "Controlling Interaction with Digital Product Memories."
+    title: "Controlling Interaction with Digital Product Memories.",
   },
   {
-    "title": "Foundations of Rule Learning"
+    title: "Foundations of Rule Learning",
   },
   {
-    "title": "Ubiquitous Display Environments"
+    title: "Ubiquitous Display Environments",
   },
   {
-    "title": "Considering the Aesthetics of Ubiquitous Displays."
+    title: "Considering the Aesthetics of Ubiquitous Displays.",
   },
   {
-    "title": "Language Processing with Perl and Prolog - Theories, Implementation, and Application"
+    title:
+      "Language Processing with Perl and Prolog - Theories, Implementation, and Application",
   },
   {
-    "title": "SemProM - Foundations of Semantic Product Memories for the Internet of Things"
+    title:
+      "SemProM - Foundations of Semantic Product Memories for the Internet of Things",
   },
   {
-    "title": "Audience Measurement for Digital Signage: Exploring the Audience's Perspective."
+    title:
+      "Audience Measurement for Digital Signage: Exploring the Audience's Perspective.",
   },
   {
-    "title": "The Smart SemProM."
-  } [...]
-]
+    title: "The Smart SemProM.",
+  },
+];
+```
+
+### Requête 3.6
+
+```js
+// Afficher le nombre de publications de type « Article » depuis 2012 (2012 non inclus)
+db.getCollection("dblp").countDocuments({
+  type: "Article",
+  year: { $gt: 2012 },
+});
+```
+
+```js
+157;
+```
+
+### Requête 3.7
+
+```js
+// Afficher les années des publications de l'auteur « Wolfgang Wahlster »
+// Pas de doublons + tri par ordre croissant
+db.getCollection("dblp")
+  .aggregate([
+    { $match: { authors: "Wolfgang Wahlster" } },
+    { $group: { _id: "$year" } }, // années distinctes
+    { $sort: { _id: 1 } }, // triage croissant
+    { $project: { _id: 0, year: "$_id" } }, // format avec remplacement de _id par year
+  ])
+  .toArray();
+```
+
+```js
+[
+  {
+    year: 2006,
+  },
+  {
+    year: 2011,
+  },
+  {
+    year: 2013,
+  },
+];
+```
+
+### Requête 3.8
+
+```js
+// Afficher la liste de tous les éditeurs (champ "publisher") distincts
+// sans doublons
+db.getCollection("dblp").distinct("publisher", {
+  publisher: { $exists: true, $ne: null, $ne: "" },
+});
+```
+
+```js
+["ACM Press and Addison-Wesley", "IOS Press", "PULIM", "Springer"];
+```
+
+### Requête 3.9
+
+```js
+// Afficher la liste des publications de « Wolfgang Wahlster » triée par année croissante
+db.getCollection("dblp")
+  .find(
+    {
+      authors: "Wolfgang Wahlster",
+    },
+    { _id: 0, year: 1, title: 1, type: 1, publisher: 1, authors: 1, author: 1 },
+  )
+  .sort({ year: 1, title: 1 })
+  .toArray();
+```
+
+```js
+[
+  {
+    type: "Article",
+    title: "Dialogue Systems Go Multimodal: The SmartKom Experience.",
+    year: 2006,
+    authors: ["Wolfgang Wahlster"],
+  },
+  {
+    type: "Article",
+    title: "Seamless Resource-Adaptive Navigation.",
+    year: 2011,
+    authors: [
+      "Tim Schwartz",
+      "Christoph Stahl",
+      "J?rg Baus",
+      "Wolfgang Wahlster",
+    ],
+  },
+  {
+    type: "Article",
+    title:
+      "The Shopping Experience of Tomorrow: Human-Centered and Resource-Adaptive.",
+    year: 2011,
+    authors: [
+      "Wolfgang Wahlster",
+      "Michael Feld",
+      "Patrick Gebhard",
+      "Dominikus Heckmann",
+      "Ralf Jung",
+      "Michael Kruppa",
+      "Michael Schmitz",
+      "L?bomira Spassova",
+      "Rainer Wasinger",
+    ],
+  },
+  {
+    type: "Article",
+    title:
+      "The Semantic Product Memory: An Interactive Black Box for Smart Objects.",
+    year: 2013,
+    authors: ["Wolfgang Wahlster"],
+  },
+];
+```
+
+### Requête 3.10
+
+```js
+// Supprimer le champ « type » de toutes les publications
+db.getCollection("dblp").updateMany({}, { $unset: { type: "" } });
+```
+
+```js
+{
+  "acknowledged": true,
+  "insertedId": null,
+  "matchedCount": 801,
+  "modifiedCount": 801,
+  "upsertedCount": 0
+}
 ```
