@@ -18,6 +18,12 @@
 - [x] Exercice 3 (requêtes 1 à 5) - Filippos
 - [x] Exercice 3 (requêtes 6 à 10) - Mathilde
 
+## Collaboration
+
+Le groupe a utilisé le client _Git_ et la plateforme _Github_ pour collaborer.
+
+L'exercice est versionné dans le dossier `semaine 3` du dépôt [https://github.com/filkat34/UEL315_S1](https://github.com/filkat34/UEL315_S1)
+
 ## Exercice 1
 
 ## Exercice 2
@@ -524,6 +530,8 @@ db.getCollection("dblp").countDocuments({
 });
 ```
 
+Playground result :
+
 ```js
 157;
 ```
@@ -542,6 +550,8 @@ db.getCollection("dblp")
   ])
   .toArray();
 ```
+
+Playground result :
 
 ```js
 [
@@ -567,6 +577,8 @@ db.getCollection("dblp").distinct("publisher", {
 });
 ```
 
+Playground result :
+
 ```js
 ["ACM Press and Addison-Wesley", "IOS Press", "PULIM", "Springer"];
 ```
@@ -585,6 +597,8 @@ db.getCollection("dblp")
   .sort({ year: 1, title: 1 })
   .toArray();
 ```
+
+Playground result :
 
 ```js
 [
@@ -638,6 +652,8 @@ db.getCollection("dblp")
 // Supprimer le champ « type » de toutes les publications
 db.getCollection("dblp").updateMany({}, { $unset: { type: "" } });
 ```
+
+Playground result :
 
 ```js
 {
