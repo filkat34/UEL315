@@ -12,13 +12,563 @@
 
 ## Répartition du travail
 
-- [ ] Exercice 1 (en entier) - Yamine
+- [x] Exercice 1 (en entier) - Yamine
 - [x] Exercice 2 (requêtes 1 à 5) - Mathieu
 - [x] Exercice 2 (requêtes 6 à 9) - Kamo
 - [x] Exercice 3 (requêtes 1 à 5) - Filippos
 - [x] Exercice 3 (requêtes 6 à 10) - Mathilde
 
-## Collaboration
+## Exercice 1
+
+### Requête 1.1
+
+```js
+// only show the "name.official" field (hide the id)
+const projectionFields = {
+  _id: 0,
+  name: { official: 1 },
+};
+
+// find the countries n°10 to 22 (skip the 9 firsts)
+db.pays
+  .find()
+  .skip(9) // skip the 9 firsts
+  .limit(22 - 10) // get the number of countries we want
+  .projection(projectionFields);
+```
+
+Playground result :
+
+```js
+[
+  {
+    name: {
+      official: "Republic of Armenia",
+    },
+  },
+  {
+    name: {
+      official: "American Samoa",
+    },
+  },
+  {
+    name: {
+      official: "Antarctica",
+    },
+  },
+  {
+    name: {
+      official: "Territory of the French Southern and Antarctic Lands",
+    },
+  },
+  {
+    name: {
+      official: "Antigua and Barbuda",
+    },
+  },
+  {
+    name: {
+      official: "Commonwealth of Australia",
+    },
+  },
+  {
+    name: {
+      official: "Republic of Austria",
+    },
+  },
+  {
+    name: {
+      official: "Republic of Azerbaijan",
+    },
+  },
+  {
+    name: {
+      official: "Republic of Burundi",
+    },
+  },
+  {
+    name: {
+      official: "Kingdom of Belgium",
+    },
+  },
+  {
+    name: {
+      official: "Republic of Benin",
+    },
+  },
+  {
+    name: {
+      official: "Burkina Faso",
+    },
+  },
+];
+```
+
+### Requête 1.2
+
+```js
+// only show the "name.official" field (hide the id)
+const projectionFields = {
+  _id: 0,
+  name: { official: 1 },
+};
+
+// find the countries n°10 to 22, sorted by area
+db.pays
+  .find()
+  .skip(9) // skip the 9 firsts
+  .limit(22 - 10) // get the number of countries we want
+  .sort({ area: 1 }) // sort by area in ascending order
+  .projection(projectionFields);
+```
+
+Playground result :
+
+```js
+[
+  {
+    name: {
+      official:
+        "Macao Special Administrative Region of the People's Republic of China",
+    },
+  },
+  {
+    name: {
+      official: "Sint Maarten",
+    },
+  },
+  {
+    name: {
+      official: "United States Minor Outlying Islands",
+    },
+  },
+  {
+    name: {
+      official: "Territory of Norfolk Island",
+    },
+  },
+  {
+    name: {
+      official: "Pitcairn Group of Islands",
+    },
+  },
+  {
+    name: {
+      official: "Bouvet Island",
+    },
+  },
+  {
+    name: {
+      official: "Saint Martin",
+    },
+  },
+  {
+    name: {
+      official: "Bermuda",
+    },
+  },
+  {
+    name: {
+      official: "British Indian Ocean Territory",
+    },
+  },
+  {
+    name: {
+      official: "Most Serene Republic of San Marino",
+    },
+  },
+  {
+    name: {
+      official: "Bailiwick of Guernsey",
+    },
+  },
+  {
+    name: {
+      official: "Anguilla",
+    },
+  },
+];
+```
+
+### Requête 1.3
+
+```js
+// find a specific country (by its capital): Mayotte
+db.pays.findOne({ capital: ["Mamoudzou"] });
+```
+
+Playground result :
+
+```js
+{
+  "_id": {
+    "$oid": "697257a47002bdcec222545a"
+  },
+  "name": {
+    "common": "Mayotte",
+    "official": "Department of Mayotte",
+    "native": {
+      "fra": {
+        "official": "Département de Mayotte",
+        "common": "Mayotte"
+      }
+    }
+  },
+  "tld": [
+    ".yt"
+  ],
+  "cca2": "YT",
+  "ccn3": "175",
+  "cca3": "MYT",
+  "cioc": "",
+  "independent": false,
+  "status": "officially-assigned",
+  "unMember": false,
+  "unRegionalGroup": "",
+  "currencies": {
+    "EUR": {
+      "name": "Euro",
+      "symbol": "€"
+    }
+  },
+  "idd": {
+    "root": "+2",
+    "suffixes": [
+      "62"
+    ]
+  },
+  "capital": [
+    "Mamoudzou"
+  ],
+  "altSpellings": [
+    "YT",
+    "Department of Mayotte",
+    "Département de Mayotte"
+  ],
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "languages": {
+    "fra": "French"
+  },
+  "translations": {
+    "ara": {
+      "official": "مايوت",
+      "common": "مايوت"
+    },
+    "bre": {
+      "official": "Departamant Mayotte",
+      "common": "Mayotte"
+    },
+    "ces": {
+      "official": "Mayotte",
+      "common": "Mayotte"
+    },
+    "deu": {
+      "official": "Übersee-Département Mayotte",
+      "common": "Mayotte"
+    },
+    "est": {
+      "official": "Mayotte",
+      "common": "Mayotte"
+    },
+    "fin": {
+      "official": "Mayotte",
+      "common": "Mayotte"
+    },
+    "fra": {
+      "official": "Département de Mayotte",
+      "common": "Mayotte"
+    },
+    "hrv": {
+      "official": "Odjel Mayotte",
+      "common": "Mayotte"
+    },
+    "hun": {
+      "official": "Mayotte",
+      "common": "Mayotte"
+    },
+    "ita": {
+      "official": "Dipartimento di Mayotte",
+      "common": "Mayotte"
+    },
+    "jpn": {
+      "official": "マイヨット島",
+      "common": "マヨット"
+    },
+    "kor": {
+      "official": "마요트",
+      "common": "마요트"
+    },
+    "nld": {
+      "official": "Afdeling Mayotte",
+      "common": "Mayotte"
+    },
+    "per": {
+      "official": "مجموعه شهرستانی مایوت",
+      "common": "مایوت"
+    },
+    "pol": {
+      "official": "Majotta",
+      "common": "Majotta"
+    },
+    "por": {
+      "official": "Departamento de Mayotte",
+      "common": "Mayotte"
+    },
+    "rus": {
+      "official": "Департамент Майотта",
+      "common": "Майотта"
+    },
+    "slk": {
+      "official": "Department Mayotte",
+      "common": "Mayotte"
+    },
+    "spa": {
+      "official": "Departamento de Mayotte",
+      "common": "Mayotte"
+    },
+    "srp": {
+      "official": "Kolektivitet Majot",
+      "common": "Majot"
+    },
+    "swe": {
+      "official": "Departementsområdet Mayotte",
+      "common": "Mayotte"
+    },
+    "tur": {
+      "official": "Mayotte",
+      "common": "Mayotte"
+    },
+    "urd": {
+      "official": "مایوٹ",
+      "common": "مایوٹ"
+    },
+    "zho": {
+      "official": "马约特",
+      "common": "马约特"
+    }
+  },
+  "latlng": [
+    -12.83333333,
+    45.16666666
+  ],
+  "landlocked": false,
+  "borders": [],
+  "area": 374,
+  "flag": "🇾🇹",
+  "demonyms": {
+    "eng": {
+      "f": "Mahoran",
+      "m": "Mahoran"
+    },
+    "fra": {
+      "f": "Mahoraise",
+      "m": "Mahorais"
+    }
+  }
+}
+```
+
+### Requête 1.4
+
+```js
+// search for countries with Dutch as one of their language:
+// they must have the "languages.nld" property, because nld = Netherlands
+const schema = {
+  $jsonSchema: {
+    required: ["languages"],
+    properties: {
+      languages: {
+        bsonType: "object",
+        required: ["nld"],
+      },
+    },
+  },
+};
+
+// only show the "name.official" field (hide the id)
+const projectionFields = {
+  _id: 0,
+  name: { official: 1 },
+};
+
+// execute the search
+db.pays.find(schema).projection(projectionFields);
+```
+
+Playground result :
+
+```js
+[
+  {
+    name: {
+      official: "Aruba",
+    },
+  },
+  {
+    name: {
+      official: "Kingdom of Belgium",
+    },
+  },
+  {
+    name: {
+      official: "Bonaire, Sint Eustatius and Saba",
+    },
+  },
+  {
+    name: {
+      official: "Country of Curaçao",
+    },
+  },
+  {
+    name: {
+      official: "Kingdom of the Netherlands",
+    },
+  },
+  {
+    name: {
+      official: "Republic of Suriname",
+    },
+  },
+  {
+    name: {
+      official: "Sint Maarten",
+    },
+  },
+];
+```
+
+### Requête 1.5
+
+```js
+// search for countries beginning with 'D'
+const query = {
+  "name.official": { $regex: /^D/ },
+};
+
+db.pays.find(query).projection({ _id: 0, name: { official: 1 } });
+```
+
+Playground result :
+
+```js
+[
+  {
+    name: {
+      official: "Democratic Republic of the Congo",
+    },
+  },
+  {
+    name: {
+      official: "Dominican Republic",
+    },
+  },
+  {
+    name: {
+      official: "Democratic Socialist Republic of Sri Lanka",
+    },
+  },
+  {
+    name: {
+      official: "Department of Mayotte",
+    },
+  },
+  {
+    name: {
+      official: "Democratic People's Republic of Korea",
+    },
+  },
+  {
+    name: {
+      official: "Democratic Republic of São Tomé and Príncipe",
+    },
+  },
+  {
+    name: {
+      official: "Democratic Republic of Timor-Leste",
+    },
+  },
+];
+```
+
+### Requête 1.6
+
+```js
+// only show the "name.official" field (hide the id)
+const projectionFields = {
+  _id: 0,
+  name: { official: 1 },
+};
+
+// execute the search: countries between 400000 and 500000 km²
+db.pays
+  .find({ area: { $gt: 400000, $lt: 500000 } })
+  .projection(projectionFields);
+```
+
+```js
+[
+  {
+    name: {
+      official: "Republic of Cameroon",
+    },
+  },
+  {
+    name: {
+      official: "Republic of Iraq",
+    },
+  },
+  {
+    name: {
+      official: "Kingdom of Morocco",
+    },
+  },
+  {
+    name: {
+      official: "Independent State of Papua New Guinea",
+    },
+  },
+  {
+    name: {
+      official: "Republic of Paraguay",
+    },
+  },
+  {
+    name: {
+      official: "Kingdom of Sweden",
+    },
+  },
+  {
+    name: {
+      official: "Turkmenistan",
+    },
+  },
+  {
+    name: {
+      official: "Republic of Uzbekistan",
+    },
+  },
+];
+```
+
+## Exercice 2
+
+## Exercice 3
+
+### Requête 1
+
+```js
+// Ajouter une nouvelle publication de type « Book »
+db.getCollection("dblp").insertOne({
+  type: "Book",
+  title:
+    "Modern Database Systems: The Object Model, Interoperability, and Beyond.",
+  year: 1995,
+  publisher: "ACM Press and Addison-Wesley",
+  authors: ["Won Kim"],
+  source: "DBLP",
+});
+```
 
 Le groupe a utilisé le client _Git_ et la plateforme _Github_ pour collaborer.
 
