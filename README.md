@@ -12,7 +12,7 @@
 
 # Dossiers
 
-Le travail 
+Le travail :
 
 - des semaines 1 & 2 (diagramme des cas d'utilisation, diagramme des classes, MCD) se trouve dans le dossier `semaine_1_2`
 - de la semaine 3 (requêtes MongoDB) se trouve dans le dossier `semaine3`
